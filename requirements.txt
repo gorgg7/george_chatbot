@@ -8,10 +8,3 @@ langchain-community==0.3.26
 langchain-huggingface==0.3.0
 PyPDF2==3.0.1
 sentence-transformers==5.0.0
-<<<<<<< HEAD
-torch==2.7.1 
-faiss-cpu==1.11.0
-PyPDF2==3.0.1
-    
-=======
->>>>>>> 021442cb66440dd1e074d647a7af9591a3522e20
