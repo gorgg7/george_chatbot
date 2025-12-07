@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # fastapi==0.116.2
 # uvicorn==0.23.2
 # python-dotenv==1.1.1
@@ -10,6 +11,8 @@
 # sentence-transformers==5.0.0
 # torch==2.7.1
 # Core AI and ML libraries
+=======
+>>>>>>> ce64d2bcd5eae996835c674b278c56b927eca229
 openai==1.99.6
 langchain==0.3.26
 langchain-openai==0.3.27
