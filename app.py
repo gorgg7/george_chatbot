@@ -40,3 +40,6 @@ async def rag_chat_post(request: ChatRequest):
 @app.get("/healthz")
 def health():
     return {"status": "ok"}
+@app.get("/")
+def read_root():
+    return {"message": "API is running!"}
