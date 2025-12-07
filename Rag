@@ -1,0 +1,55 @@
+# from PyPDF2 import PdfReader
+# from langchain.text_splitter import CharacterTextSplitter
+# from langchain_huggingface import HuggingFaceEmbeddings
+# from langchain_community.vectorstores import FAISS
+
+# pdf_path = "mina.txt" 
+# def build_VDB(pdf_path ):
+#     #load_dotenv()
+    
+    
+#     pdf_reader = PdfReader(pdf_path)
+#     text = ""
+#     for page in pdf_reader.pages:
+#         text += page.extract_text()
+        
+#     text_splitter = CharacterTextSplitter(
+#         separator="\n",
+#         chunk_size=1000,
+#         chunk_overlap=200,
+#         length_function=len
+#     )
+#     chunks = text_splitter.split_text(text)
+    
+#     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+#     knowledge_base = FAISS.from_texts(chunks, embeddings)
+#     knowledge_base.save_local("mm")
+
+   
+    
+    
+# build_VDB(pdf_path)  
+from langchain.text_splitter import CharacterTextSplitter
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
+
+file_path = "mina.txt"
+
+def build_VDB(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        text = f.read()
+
+    text_splitter = CharacterTextSplitter(
+        separator="\n",
+        chunk_size=1000,
+        chunk_overlap=200,
+        length_function=len
+    )
+    chunks = text_splitter.split_text(text)
+
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    knowledge_base = FAISS.from_texts(chunks, embeddings)
+    knowledge_base.save_local("mm")
+
+
+build_VDB(file_path)

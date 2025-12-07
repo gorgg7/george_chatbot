@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+venv/
+temp_outputs/
+temp_uploads/
+*.faiss
+*.pkl
+.env
+*.pdf
+final_analysis_report.pdf Maintenance Manual_ValueTec 180.pdf
+logs/
+*.log
+*.png
+*.jpg
+test_local_analysis.py
+*.jpeg
