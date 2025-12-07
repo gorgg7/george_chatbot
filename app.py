@@ -37,3 +37,6 @@ async def rag_chat_post(request: ChatRequest):
     except Exception as e:
         logging.error(f"RAG Chat failed: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+@app.get("/healthz")
+def health():
+    return {"status": "ok"}
