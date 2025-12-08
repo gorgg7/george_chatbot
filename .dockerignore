@@ -8,11 +8,3 @@ Grag/
 *.pdf
 data/
 venv/
-__pycache__
-.git
-.env
-*.pyc
-*.pyo
-*.pdb
-*.log
-node_modules
