@@ -1,28 +1,25 @@
-FROM python:3.11-slim
+# Stage 1: Build environment
+FROM python:3.11-slim AS build
 
-# Environment variables
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-
-# Set work directory
-WORKDIR /app
-
-# Install system dependencies
+# Install build dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     libgl1 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
+WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu -r requirements.txt
 
-# Copy full project contents
-COPY . .
+# Stage 2: Production environment
+FROM python:3.11-slim
 
-# Expose FastAPI port
+# Install runtime dependencies
+RUN apt-get update && apt-get install -y libgl1 && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+COPY --from=build /app /app
+
 EXPOSE 8000
-
-# Run FastAPI
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
